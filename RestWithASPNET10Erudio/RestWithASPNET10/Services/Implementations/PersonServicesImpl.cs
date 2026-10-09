@@ -1,55 +1,44 @@
 ﻿using RestWithASPNET10.Model;
+using RestWithASPNET10.Model.Context;
+using RestWithASPNET10.Repositories.Interfaces;
+using RestWithASPNET10.Services.Interfaces;
 
 namespace RestWithASPNET10.Services.Implementations
 {
     public class PersonServicesImpl : IPersonServices
     {
-        public Person Update(Person person)
+
+        private IPersonRepository _repository;
+
+        public PersonServicesImpl(IPersonRepository repository)
         {
-            person.Id = new Random().Next(1, 1000); //Simula ID
-            return person;
+            _repository = repository;
+        }
+        public List<Person> FindAll()
+        {
+            
+            return _repository.FindAll();
         }
 
-        public Person FindById(long id)
+        public Person? FindById(long id)
         {
-            var person = mockPerson((int)id);
-
-            return person;
-        }
-
-        private Person mockPerson(int i)
-        {
-            var person = new Person
-            {
-                Id = new Random().Next(1, 1000),
-                FirstName = "John " + i,
-                LastName = "Doe " + i,
-                Address = "123 Main Street " + i,
-                Gender = (i % 2) == 0 ? "Male" : "Feminine"
-            };
-            return person;
+            return _repository.FindById(id);
         }
 
         public Person Create(Person person)
         {
-            return person;
+            return _repository.Create(person);
+             
+        }
+        public Person Update(Person person)
+        {
+            return _repository.Update(person);
         }
 
         public void Delete(long id)
         {
-            // Simulate deletion logic
+            _repository.Delete(id);
         }
-
-        public List<Person> FindAll()
-        {
-            List<Person> persons = new List<Person>();
-            for (int i = 0; i < 8; i++)
-            {
-                persons.Add(mockPerson(i));
-            }
-            return persons;
-        }
-
 
 
     }
