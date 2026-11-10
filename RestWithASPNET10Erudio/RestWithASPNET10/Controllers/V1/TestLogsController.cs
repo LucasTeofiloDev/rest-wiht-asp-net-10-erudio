@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace RestWithASPNET10.Controllers
+namespace RestWithASPNET10.Controllers.V1
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/[controller]/v1")]
     public class TestLogsController : ControllerBase
     {
         private readonly ILogger<TestLogsController> _logger;

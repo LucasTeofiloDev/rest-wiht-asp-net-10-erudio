@@ -1,13 +1,14 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RestWithASPNET10.Model;
+using RestWithASPNET10.Data.DTO;
 using RestWithASPNET10.Services.Interfaces;
 using Serilog;
 
-namespace RestWithASPNET10.Controllers
+namespace RestWithASPNET10.Controllers.V1
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/[controller]/v1")]
     public class BookController : ControllerBase
     {
         private IBookServices _bookServices;
@@ -37,7 +38,7 @@ namespace RestWithASPNET10.Controllers
 
 
         [HttpPost]
-        public IActionResult CriarLivros(Book book)
+        public IActionResult CriarLivros(BookDTO book)
         {
             if (book == null)
             {
@@ -53,7 +54,7 @@ namespace RestWithASPNET10.Controllers
         }
 
         [HttpPut]
-        public IActionResult AtualizarLivros(Book book)
+        public IActionResult AtualizarLivros(BookDTO book)
         {
             if (_bookServices == null)
             {

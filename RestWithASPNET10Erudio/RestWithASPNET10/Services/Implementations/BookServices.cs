@@ -1,45 +1,51 @@
 ﻿using RestWithASPNET10.Model;
 using RestWithASPNET10.Services.Interfaces;
 using RestWithASPNET10.Repositories.Interfaces;
+using RestWithASPNET10.Data.DTO;
+using Mapster;
 
 namespace RestWithASPNET10.Services.Implementations
 {
     public class BookServices : IBookServices
     {
-        private readonly IBookRepository _bookRepository;
+        private readonly IRepository<Book> _bookRepository;
 
-        public BookServices(IBookRepository bookRepository)
+        public BookServices(IRepository<Book> bookRepository)
         {
             _bookRepository = bookRepository;
         }
 
-        public List<Book> FindAll()
+        public List<BookDTO> FindAll()
         {
-            return _bookRepository.FindAll();
+            return _bookRepository.FindAll().Adapt<List<BookDTO>>();
         }
 
         
 
-        public Book FindById(long id)
+        public BookDTO FindById(long id)
         {
-            return _bookRepository.FindById(id);
+            return _bookRepository.FindById(id).Adapt<BookDTO>();
         }
 
         
 
-        public Book CreateBook(Book book)
+        public BookDTO CreateBook(BookDTO book)
         {
-           return _bookRepository.CreateBook(book);
+            var bookEntity = book.Adapt<Book>();
+            var entity = _bookRepository.CreateT(bookEntity);
+            return entity.Adapt<BookDTO>();
         }
 
-        public Book UpdateBook(Book book)
+        public BookDTO UpdateBook(BookDTO book)
         {
-            return _bookRepository.UpdateBook(book);
+            var bookEntity = book.Adapt<Book>();
+            var entity = _bookRepository.UpdateT(bookEntity);
+            return entity.Adapt<BookDTO>();
         }
 
         public void DeleteBook(int id)
         {
-            _bookRepository.DeleteBook(id);
+            _bookRepository.DeleteT(id);
         }
 
 

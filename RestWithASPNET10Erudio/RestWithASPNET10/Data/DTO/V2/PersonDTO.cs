@@ -1,0 +1,15 @@
+﻿using RestWithASPNET10.Model.Base;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace RestWithASPNET10.Data.DTO.V2;
+
+public class PersonDTO 
+{
+    public long Id { get; set; }
+    public string FirstName { get; set; }
+    public string LastName { get; set; }
+    public string Address { get; set; }
+    public string Gender { get; set; }
+    public DateTime? BirthDay { get; set; }
+}

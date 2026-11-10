@@ -1,4 +1,3 @@
-﻿
 INSERT [dbo].[person] ( [first_name], [last_name], [address], [gender]) 
 VALUES ( N'Lucas', N'Teofilo', N'São Paulo', N'Male')
 GO

@@ -1,3 +1,4 @@
 <Solution>
+  <Project Path="RestWithASPNET10.Tests/RestWithASPNET10.Tests.csproj" Id="331d9ba8-329c-4028-8b0d-39e1e92d4f00" />
   <Project Path="RestWithASPNET10/RestWithASPNET10.csproj" />
 </Solution>

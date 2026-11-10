@@ -1,15 +1,12 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using RestWithASPNET10.Model.Base;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace RestWithASPNET10.Model
 {
     [Table("Person")]
-    public class Person
+    public class Person : BaseEntity
     {
-        [Key]
-        [Column("id")]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public long Id { get; set; }
         [Required]
         [Column("first_name", TypeName = "varchar(100)")]
         [MaxLength(100)]
@@ -25,5 +22,8 @@ namespace RestWithASPNET10.Model
         [Column("gender", TypeName = "varchar(6)")]
         [MaxLength(6)]
         public string Gender { get; set; }
+
+        [NotMapped]
+        public DateTime? BirthDate { get; set; }
     }
 }

@@ -1,4 +1,3 @@
-﻿
 CREATE TABLE dbo. person (
 [id] bigint NOT NULL IDENTITY,
 [first_name] varchar(80) NOT NULL,
